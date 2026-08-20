@@ -166,6 +166,7 @@ h1{font-size:clamp(2rem,5vw,4.25rem);line-height:1.02;margin:10px 0 12px;letter-
     <div class="form-grid">
       <input id="fname" class="input" placeholder="ชื่อ" autocomplete="given-name">
       <input id="lname" class="input" placeholder="นามสกุล" autocomplete="family-name">
+        <input id="studentNo" class="input" type="number" placeholder="เลขที่">
     </div>
     <button class="btn btn-primary" onclick="beginQuiz()">กดทำแบบฝึก</button>
   </section>
@@ -218,8 +219,9 @@ function showStart(){ showOnly("start"); }
 function beginQuiz(){
   const f = document.getElementById("fname").value.trim();
   const l = document.getElementById("lname").value.trim();
-  if(!f || !l){ alert("กรุณากรอกชื่อและนามสกุลให้ครบครับ"); return; }
-  fullName = f + " " + l;
+  const no = document.getElementById("studentNo").value.trim();
+  if(!f || !l){ alert("กรุณากรอกชื่อ นามสกุล และเลขที่ให้ครบด้วยน้า"); return; }
+  fullName = f + " " + l + " เลขที่ " + no;
   const groups = [0,1,2,3].map(letter =>
     BANK.filter(item => item.ans === letter).sort(() => Math.random() - 0.5)
   );
